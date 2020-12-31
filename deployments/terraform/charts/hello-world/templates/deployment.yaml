@@ -39,7 +39,7 @@ spec:
 {{- if .Values.globalEnvironments.enabled }}
           env:
 {{ toYaml .Values.globalEnvironments.environments | indent 10 }}
-{{- end }}         
+{{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

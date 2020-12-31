@@ -8,16 +8,16 @@ image:
   repository: ${deployment_image}
   pullPolicy: IfNotPresent
 
-app:  
+app:
   port: 5000
 
 globalEnvironments:
   enabled: true
-  
+
   environments:
   - name: ENVIRONMENT
     value: ${deployment_environment}
-
+  
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -28,18 +28,18 @@ service:
 
 ingress:
   enabled: true
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: ${deployment_endpoint}
-      paths: 
-      - /
-  tls: 
-    - secretName: hello-world-tls
-      hosts:
-        - ${deployment_endpoint}
+  - host: ${deployment_endpoint}
+    paths:
+    - /
+  tls:
+  - secretName: hello-world-tls
+    hosts:
+    - ${deployment_endpoint}
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
